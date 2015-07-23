@@ -9,7 +9,11 @@ RUN apt-get -y dist-upgrade
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install required packages
-RUN apt-get install -y git python-dev openssl python-openssl python-pyasn1 python-twisted python-mysqldb mysql-server supervisor
+RUN apt-get install -y git python-pip python-dev openssl python-openssl python-pyasn1 python-twisted python-mysqldb mysql-server supervisor libgeoip-dev
+
+# Install Elasticsearch requirements with pip
+RUN pip install pyes
+RUN pip install GeoIP
 
 # Get Kippo fork with Elasticsearch support
 RUN git clone https://github.com/ikoniaris/kippo /kippo
